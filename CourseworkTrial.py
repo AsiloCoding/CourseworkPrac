@@ -15,12 +15,11 @@ Program = True
 class Screen():
 	def __init__(self, window):
 		self.window = window
-		self.GoBack = 0
-		self.GoNext = 0
+		
 	def SetColour(self,colour):
 		self.window.fill(colour)
 		
-class Button():
+class Button(): #based off of the example code excluding buttons that use text and highlighting the text
 	def __init__(self, image, pos):
 		self.image = image
 		self.x_pos = pos[0]
@@ -31,7 +30,7 @@ class Button():
 		screen.blit(self.image, self.rect)
 
 	def checkForInput(self, position):
-		if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
+		if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom): #compares the given position with the area of the button
 			return True
 		else:
 			return False
@@ -43,7 +42,7 @@ def GSWScreen():
 		GoBack = Button(Back, (50,550))
 		GoBack.update(window)
 		text = Font.render("GSW screen", 1, "black")
-		window.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
+		window.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2)) #sets text in the middle of the screen
 		for e in event.get():
 			if e.type == QUIT:
 				quit()
